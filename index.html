@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>AbeCafe</title>
+</head>
+
+<body style="background-color:#004b85">
+  <form action="db.php" method="post" name="frmAbeCafe" style="background:#c98b0e; margin: 0 auto; 
+width:1000px;">
+    <table>
+      <caption><b>Welcome to AbeCafe!</b></caption>
+      <caption><i>Your favorite coffee, now online!</i></caption>
+      <caption>(Please make sure to order a minimum of 4 cups for delivery!)</caption>
+      <tr>
+        <th>Customer's Name:</th>
+        <td><input type="text" name="custname" size="50" value=""></td>
+      </tr>
+      <tr>
+        <th>Customer's Email:</th>
+        <td><input type="email" name="custemail" size="50" value=""></td>
+      </tr>
+      <tr>
+        <th>Customer's Phone:</th>
+        <td><input type="text" name="custphone" size="50" value=""></td>
+      </tr>
+      <tr>
+        <th>Customer's Address:</th>
+        <td><input type="text" name="custaddress" size="50" value=""></td>
+      </tr>
+
+      <tr>
+        <th>Cup Size</th>
+        <th>Price/Unit(RM)</th>
+        <th>Flavour</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+      </tr>
+
+      <tr>
+        <td>Small Cup</td>
+        <td><input type="text" name="cupsmallprice" size="50" value="5.00"></td>
+        <td><select name="cupsmallflavour" id="cupsmallflavour">
+            <option value="Cappuccino">Cappuccino</option>
+            <option value="Espresso">Espresso</option>
+            <option value="Caramel Macchiato">Caramel Macchiato</option>
+            <option value="Latte">Latte</option>
+          </select></td>
+        <td><input type="text" name="cupsmallquantity" size="30" value="" onchange="cup_small();"></td>
+        <td><input type="text" name="cupsmallsubtotal" size="10" value="0.00"></td>
+      </tr>
+
+      <tr>
+        <td>Medium Cup</td>
+        <td><input type="text" name="cupmediumprice" size="50" value="10.00"></td>
+        <td><label for="cupmediumflavour"></label>
+          <select name="cupmediumflavour" id="cupmediumflavour">
+            <option value="Cappuccino">Cappuccino</option>
+            <option value="Espresso">Espresso</option>
+            <option value="Caramel Macchiato">Caramel Macchiato</option>
+            <option value="Latte">Latte</option>
+          </select></td>
+        <td><input type="text" name="cupmediumquantity" size="30" value="" onchange="cup_medium();"></td>
+        <td><input type="text" name="cupmediumsubtotal" size="10" value="0.00"></td>
+      </tr>
+
+      <tr>
+        <td>Large Cup</td>
+        <td><input type="text" name="cuplargeprice" size="50" value="15.00"></td>
+        <td><label for="cuplargeflavour"></label>
+          <select name="cuplargeflavour" id="cuplargeflavour">
+            <option value="Cappuccino">Cappuccino</option>
+            <option value="Espresso">Espresso</option>
+            <option value="Caramel Macchiato">Caramel Macchiato</option>
+            <option value="Latte">Latte</option>
+          </select></td>
+        <td><input type="text" name="cuplargequantity" size="30" value="" onchange="cup_large();"></td>
+        <td><input type="text" name="cuplargesubtotal" size="10" value="0.00"></td>
+      </tr>
+
+      <tr>
+        <th colspan="3">Choose a delivery time:</th>
+        <td><input type="datetime-local" name="deliverytime" value=date("Y-m-d\TH:i:s", strtotime($deliverytime))></td>
+      </tr>
+
+      <tr>
+        <th colspan="3">Total cups purchased:</th>
+        <td><input type="text" name="quantitytotal" size="30" value="0" id="quantitytotal"></td>
+      </tr>
+
+      <tr>
+        <th colspan="3">Grand total:</th>
+        <td><input type="text" name="grandtotal" size="30" value="0.00"></td>
+      </tr>
+
+      <tr>
+        <td colspan="4" align="left"><input type="button" name="Reset" value="Reset" class="btnReset" onclick="init();">
+        </td>
+        <td colspan="4" align="left"><input type="submit" name="Save" value="Save" class="btnSave"
+            onclick="myFunction();">
+        <td>
+          <p id="demo"></p>
+        </td>
+      </tr>
+
+    </table>
+  </form>
+
+  <script>
+    function myFunction() {
+      var x, text;
+
+      x = document.getElementById("quantitytotal").value;
+
+      if (x < 4) {
+        text = "Please purchase at least 4 drinks!";
+
+      } else {
+        text = "Thank you for your purchase!";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+  </script>
+
+  <script src="AbeCafe.js" charset="utf-8"></script>
+
+</body>
